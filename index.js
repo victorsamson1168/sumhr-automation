@@ -1,18 +1,19 @@
-const { startSchedule } = require("./scheduler");
+const { startClockInSchedule } = require("./scheduler");
 const express = require("express");
 const data = require("./data.json");
 const { loginMongo } = require("./mongoConnection");
 
-// Create an Express application
 const app = express();
-const port = 3000; // Port number on which the server will listen
+const port = 3000;
 
-// Define a route handler for the default route
 app.get("/", (req, res) => {
-  res.send("Hello World!"); // Send a response to the client
+  res.send("Hello World!");
 });
 
-// Start the server and listen on the specified port
+app.get("/test", (req, res) => {
+  res.send("TEST DATA");
+});
+
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
 });
@@ -20,12 +21,12 @@ app.listen(port, () => {
 // on start
 
 const start = async () => {
+  // login mongo
   await loginMongo();
 
   data.users.forEach((user) => {
-    startSchedule(user);
+    startClockInSchedule(user);
   });
 };
-// login mongo
 
 start();

@@ -1,36 +1,54 @@
-// const CREDS = require('./creds');
+import { pass } from "./pass";
+import { Page, launch } from "puppeteer";
 
-const { pass } = require('./pass');
+// in our out
+async function main(type, username, password) {
+  const browser = await launch({ headless: false });
 
-async function main() {
-    const puppeteer = require('puppeteer');
-    const browser = await puppeteer.launch({ headless: false });
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1200, height: 720 });
 
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1200, height: 720 })
-    console.log("Waiting 1");
+  await page.goto("https://mckinley.sumhr.io/", { waitUntil: "networkidle0" });
 
-    await page.goto('https://mckinley.sumhr.io/', { waitUntil: 'networkidle0' });
-
-    console.log("Waiting");
-    await page.type('#email', "pulkit.guglani@mckinleyrice.co");
-    await page.type('#password', pass);
-    await page.click(".MuiButton-root")
-    await page.waitForNavigation();
-
-    console.log("LOGGED IN");
-
-
-    // await page.click(".MuiButton-containedPrimary")
-
-
-
-
-
+  console.log("Waiting");
+  await page.type("#email", username);
+  await page.type("#password", password);
+  await page.click(".MuiButton-root");
+  await page.waitForNavigation();
+  await page.waitForTimeout(1000);
+  await pressButton(page, type);
+  console.log("LOGGED IN");
 }
-main();
-//   await page.type('#loginPw', CREDS.password);
-//   await page.click('#gNO89b');
 
+/**
+ * @param {Page} page The date
+ * @param {string} type The string
+ */
+const pressButton = async (page, type) => {
+  const className = "";
+  switch (type) {
+    case "in":
+      className = ".punch-in";
+      break;
+    case "out":
+      className = ".punch-out";
+      break;
 
-module.exports = { main }
+    default:
+      break;
+  }
+  const buttonParent = await page.$(className);
+  if (buttonParent) {
+  }
+  const clockInOutButton = await buttonParent.$("button");
+  await clockInOutButton.click();
+  console.log("clocked" + type);
+};
+
+export const clockIn = (username, password) => {
+  main("in", username, password);
+};
+
+export const clockOut = (username, password) => {
+  main("out", username, password);
+};
