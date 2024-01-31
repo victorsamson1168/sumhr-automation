@@ -1,4 +1,4 @@
-import { startClockInSchedule } from "./scheduler.js";
+import { startClockInSchedule, startClockOutSchedule } from "./scheduler.js";
 import express from "express";
 import { users } from "./data.js";
 import { loginMongo } from "./mongoConnection.js";
@@ -26,6 +26,7 @@ const start = async () => {
 
   users.forEach((user) => {
     startClockInSchedule(user);
+    startClockOutSchedule(user);
   });
 };
 

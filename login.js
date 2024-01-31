@@ -1,7 +1,7 @@
 import { Page, launch } from "puppeteer";
 
 // in our out
-async function main(type, username, password) {
+async function automationFunction(type, username, password) {
   const browser = await launch({ headless: false });
 
   const page = await browser.newPage();
@@ -38,18 +38,18 @@ const pressButton = async (page, type) => {
   }
   const buttonParent = await page.$(className);
   if (buttonParent) {
+    const clockInOutButton = await buttonParent.$("button");
+    await clockInOutButton.click();
+    console.log("clocked" + type);
   }
-  const clockInOutButton = await buttonParent.$("button");
-  await clockInOutButton.click();
-  console.log("clocked" + type);
 };
 
 const clockIn = (username, password) => {
-  main("in", username, password);
+  automationFunction("in", username, password);
 };
 
 const clockOut = (username, password) => {
-  main("out", username, password);
+  automationFunction("out", username, password);
 };
 
 export { clockIn, clockOut };
