@@ -4,14 +4,14 @@ import { users } from "./data.js";
 import { loginMongo } from "./mongoConnection.js";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send({data:"its working on slash"});
 });
 
 app.get("/test", (req, res) => {
-  res.send("TEST DATA");
+  res.send({data:"its working on test"});
 });
 
 app.listen(port, () => {
