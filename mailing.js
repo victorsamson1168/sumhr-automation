@@ -1,6 +1,7 @@
 import { createTransport } from "nodemailer";
 
 async function sendEmail(notificationMail) {
+  console.log("Started mail process");
   // Create a transporter object using the default SMTP transport
   let transporter = createTransport({
     service: "Gmail",
