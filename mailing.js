@@ -1,9 +1,8 @@
-const nodemailer = require("nodemailer");
-const { pass2 } = require("./pass").default;
+import { createTransport } from "nodemailer";
 
-async function sendEmail() {
+async function sendEmail(notificationMail) {
   // Create a transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
+  let transporter = createTransport({
     service: "Gmail",
     auth: {
       user: "pulkitcube@gmail.com", // Your email address
@@ -14,7 +13,7 @@ async function sendEmail() {
   // Message object
   let message = {
     from: "pulkitcube@gmail.com", // Sender email address
-    to: "pulkit.guglani@mckinleyrice.co", // List of recipients
+    to: notificationMail, // List of recipients
     subject: "Test Email", // Subject line
     text: "This is a test email sent from Node.js using Nodemailer.", // Plain text body
   };
@@ -29,4 +28,6 @@ async function sendEmail() {
 }
 
 // Call the function to send the email
-sendEmail();
+// sendEmail();
+
+export { sendEmail };

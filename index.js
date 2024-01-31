@@ -7,11 +7,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send({data:"its working on slash"});
+  res.send({ data: "its working on slash" });
 });
 
 app.get("/test", (req, res) => {
-  res.send({data:"its working on test"});
+  res.send({ data: "its working on test" });
 });
 
 app.listen(port, () => {
@@ -22,11 +22,11 @@ app.listen(port, () => {
 
 const start = async () => {
   // login mongo
-  await loginMongo();
+  // await loginMongo();
 
   users.forEach((user) => {
     startClockInSchedule(user);
   });
 };
 
-// start();
+start();
