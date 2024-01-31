@@ -2,7 +2,7 @@ import { Page, launch } from "puppeteer";
 
 // in our out
 async function automationFunction(type, username, password) {
-  const browser = await launch({ headless: false });
+  const browser = await launch({ headless: true });
 
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 720 });
