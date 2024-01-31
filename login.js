@@ -1,4 +1,3 @@
-import { pass } from "./pass";
 import { Page, launch } from "puppeteer";
 
 // in our out
@@ -45,10 +44,12 @@ const pressButton = async (page, type) => {
   console.log("clocked" + type);
 };
 
-export const clockIn = (username, password) => {
+const clockIn = (username, password) => {
   main("in", username, password);
 };
 
-export const clockOut = (username, password) => {
+const clockOut = (username, password) => {
   main("out", username, password);
 };
+
+export { clockIn, clockOut };

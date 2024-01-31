@@ -1,10 +1,11 @@
-const cron = require("cron");
-const { clockIn, clockOut } = require("./login");
+import { CronJob } from "cron";
+import { clockIn, clockOut } from "./login.js";
+
 const startClockInSchedule = (user) => {
   const { startTime, username, password } = user;
   console.log("Started");
 
-  const job = new cron.CronJob(
+  const job = new CronJob.CronJob(
     `${startTime.second} ${startTime.minute} ${startTime.hour} * * *`,
     function () {
       console.log("Credentials");
@@ -36,5 +37,5 @@ const startClockOutSchedule = (user) => {
   job.start();
 };
 
-module.exports = { startClockInSchedule };
+export { startClockInSchedule, startClockOutSchedule };
 // Start the cron job

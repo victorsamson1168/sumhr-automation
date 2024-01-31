@@ -1,7 +1,7 @@
-const { startClockInSchedule } = require("./scheduler");
-const express = require("express");
-const data = require("./data.json");
-const { loginMongo } = require("./mongoConnection");
+import { startClockInSchedule } from "./scheduler.js";
+import express from "express";
+import { users } from "./data.js";
+import { loginMongo } from "./mongoConnection.js";
 
 const app = express();
 const port = 3000;
@@ -24,9 +24,9 @@ const start = async () => {
   // login mongo
   await loginMongo();
 
-  data.users.forEach((user) => {
+  users.forEach((user) => {
     startClockInSchedule(user);
   });
 };
 
-start();
+// start();
