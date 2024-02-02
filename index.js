@@ -4,7 +4,7 @@ import { users } from "./data.js";
 import { loginMongo } from "./mongoConnection.js";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 80;
 
 app.get("/", (req, res) => {
   res.send({ data: "its working on slash" });
