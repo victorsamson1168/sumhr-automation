@@ -81,7 +81,7 @@ const test = async () => {
     console.log("document", document);
     console.log("document", document.getElementsByTagName("body"));
 
-    console.log(document);
+    console.log(page.url);
 
     const element = document.querySelector(".thin-scroll.MuiPaper-root");
     if (element) {
