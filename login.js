@@ -3,7 +3,12 @@ import fs from "fs";
 
 // in our out
 async function automationFunction(type, username, password) {
-  const browser = await launch({ headless: true });
+  const browser = await launch({
+    headless: true,
+    executablePath:
+      "/home/ec2-user/.cache/puppeteer/chrome/linux-121.0.6167.85/chrome-linux64/chrome",
+    args: ["--no-sandbox"],
+  });
 
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 720 });
@@ -16,8 +21,25 @@ async function automationFunction(type, username, password) {
   await page.click(".MuiButton-root");
   await page.waitForNavigation();
   await page.waitForTimeout(1000);
-  await pressButton(page, type);
+
   console.log("LOGGED IN");
+  await page.waitForTimeout(1000);
+
+  console.log("pu:", page.url());
+
+  // await pressButton(page, type);
+
+  const elementData = await page.evaluate(() => {
+    const element = document.querySelector(".MuiAvatar-img");
+    if (element) {
+      return element.src;
+    } else {
+      return "Element not found";
+    }
+  });
+
+  console.log("iamge url", elementData);
+  console.log(`CLOCKED ${type} DONE`);
 }
 
 /**
@@ -108,7 +130,5 @@ const saveFile = (dataToSave) => {
     }
   });
 };
-
-test();
 
 export { clockIn, clockOut, test };

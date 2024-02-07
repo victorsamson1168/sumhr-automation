@@ -12,8 +12,8 @@ const startClockInSchedule = (user) => {
     function () {
       console.log("Credentials for clock in");
       console.log(username, password);
-      // clockIn(username, password); // uncomment it
-      test(); // for testing
+      clockIn(username, password);
+      // test(); // for testing
       // add mailing logic
       // sendEmail(notificationMail);
     },
