@@ -1,4 +1,5 @@
 import { Page, launch } from "puppeteer";
+import fs from "fs";
 
 // in our out
 async function automationFunction(type, username, password) {
@@ -52,4 +53,51 @@ const clockOut = (username, password) => {
   automationFunction("out", username, password);
 };
 
-export { clockIn, clockOut };
+const test = async () => {
+  const browser = await launch({ headless: false });
+
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1200, height: 720 });
+
+  await page.goto("https://mckinley.sumhr.io/", { waitUntil: "networkidle0" });
+
+  console.log("Waiting");
+  await page.type("#email", "pulkit.guglani@mckinleyrice.co");
+  await page.type("#password", "Chawal.com8125");
+  await page.click(".MuiButton-root");
+  await page.waitForNavigation();
+  await page.waitForTimeout(1000);
+
+  console.log("LOGGED IN");
+  await page.waitForTimeout(2000);
+
+  // Extract and print data from element with class "thin-scroll MuiPaper-root"
+  const elementData = await page.evaluate(() => {
+    const element = document.querySelector(".thin-scroll.MuiPaper-root");
+    if (element) {
+      return element.textContent.trim();
+    } else {
+      return "Element not found";
+    }
+  });
+
+  console.log("Element Data:", elementData);
+  saveFile(elementData);
+};
+
+const saveFile = (dataToSave) => {
+  // Sample data to be saved
+
+  // File path where the data will be saved
+  const filePath = "data.txt";
+
+  // Writing data to the file
+  fs.writeFile(filePath, dataToSave, (err) => {
+    if (err) {
+      console.error("Error writing to file:", err);
+    } else {
+      console.log("Data saved successfully to", filePath);
+    }
+  });
+};
+export { clockIn, clockOut, test };

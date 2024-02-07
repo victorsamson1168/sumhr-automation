@@ -4,8 +4,8 @@ export const users = [
     notificationMail: "victor.samson@mckinleyrice.co",
     password: "Chawal.com8125",
     startTime: {
-      hour: "10",
-      minute: "00",
+      hour: "12",
+      minute: "",
       second: "00",
     },
     endTime: {

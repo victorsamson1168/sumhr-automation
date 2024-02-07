@@ -1,5 +1,5 @@
 import { CronJob } from "cron";
-import { clockIn, clockOut } from "./login.js";
+import { clockIn, clockOut, test } from "./login.js";
 import { sendEmail } from "./mailing.js";
 
 const startClockInSchedule = (user) => {
@@ -12,7 +12,8 @@ const startClockInSchedule = (user) => {
     function () {
       console.log("Credentials for clock in");
       console.log(username, password);
-      clockIn(username, password);
+      // clockIn(username, password); // uncomment it
+      test(); // for testing
       // add mailing logic
       // sendEmail(notificationMail);
     },
