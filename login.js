@@ -55,7 +55,7 @@ const clockOut = (username, password) => {
 
 const test = async () => {
   const browser = await launch({
-    headless: false,
+    headless: true,
     executablePath:
       "/home/ec2-user/.cache/puppeteer/chrome/linux-121.0.6167.85/chrome-linux64/chrome",
     args: ["--no-sandbox"],
