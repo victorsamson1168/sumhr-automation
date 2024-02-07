@@ -54,7 +54,11 @@ const clockOut = (username, password) => {
 };
 
 const test = async () => {
-  const browser = await launch({ headless: false });
+  const browser = await launch({
+    headless: false,
+    executablePath:
+      "/home/ec2-user/.cache/puppeteer/chrome/linux-121.0.6167.85/chrome-linux64/chrome",
+  });
 
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 720 });
