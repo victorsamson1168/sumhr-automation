@@ -75,7 +75,7 @@ const test = async () => {
 
   console.log("LOGGED IN");
 
-  console.log("pu:", page.url);
+  console.log("pu:", page.url());
   await page.waitForTimeout(6000);
 
   // Extract and print data from element with class "thin-scroll MuiPaper-root"
