@@ -74,6 +74,7 @@ const test = async () => {
   await page.waitForTimeout(1000);
 
   console.log("LOGGED IN");
+  await page.waitForTimeout(12000);
 
   console.log("pu:", page.url());
   await page.waitForTimeout(6000);
