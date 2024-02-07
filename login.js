@@ -58,6 +58,7 @@ const test = async () => {
     headless: false,
     executablePath:
       "/home/ec2-user/.cache/puppeteer/chrome/linux-121.0.6167.85/chrome-linux64/chrome",
+    args: ["--no-sandbox"],
   });
 
   const page = await browser.newPage();
