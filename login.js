@@ -31,13 +31,14 @@ async function automationFunction(type, username, password) {
   await page.waitForTimeout(3000);
 
   const elementData = await page.evaluate(async () => {
-    await page.waitForTimeout(3000);
-    const element = document.querySelector(".MuiAvatar-img");
-    if (element) {
-      return element.src;
-    } else {
-      return "Element not found";
-    }
+    setTimeout(() => {
+      const element = document.querySelector(".MuiAvatar-img");
+      if (element) {
+        return element.src;
+      } else {
+        return "Element not found";
+      }
+    }, 3000);
   });
 
   console.log("iamge url", elementData);
