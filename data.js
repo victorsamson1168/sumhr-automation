@@ -5,12 +5,12 @@ export const users = [
     password: "Chawal.com8125",
     startTime: {
       hour: "15",
-      minute: "19",
+      minute: "24",
       second: "00",
     },
     endTime: {
       hour: "15",
-      minute: "21",
+      minute: "26",
       second: "00",
     },
     approved: true,
@@ -21,12 +21,12 @@ export const users = [
     password: "Joseph_123",
     startTime: {
       hour: "15",
-      minute: "20",
+      minute: "25",
       second: "00",
     },
     endTime: {
       hour: "15",
-      minute: "22",
+      minute: "27",
       second: "00",
     },
     approved: true,

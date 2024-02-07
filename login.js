@@ -30,7 +30,8 @@ async function automationFunction(type, username, password) {
   // await pressButton(page, type);
   await page.waitForTimeout(3000);
 
-  const elementData = await page.evaluate(() => {
+  const elementData = await page.evaluate(async () => {
+    await page.waitForTimeout(3000);
     const element = document.querySelector(".MuiAvatar-img");
     if (element) {
       return element.src;
