@@ -74,15 +74,14 @@ const test = async () => {
   await page.waitForTimeout(1000);
 
   console.log("LOGGED IN");
+  console.log("document", document);
+  console.log("document", document.getElementsByTagName("body"));
+
+  console.log(page.url);
   await page.waitForTimeout(6000);
 
   // Extract and print data from element with class "thin-scroll MuiPaper-root"
   const elementData = await page.evaluate(() => {
-    console.log("document", document);
-    console.log("document", document.getElementsByTagName("body"));
-
-    console.log(page.url);
-
     const element = document.querySelector(".thin-scroll.MuiPaper-root");
     if (element) {
       return element.textContent.trim();
