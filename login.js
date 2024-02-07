@@ -30,15 +30,13 @@ async function automationFunction(type, username, password) {
   // await pressButton(page, type);
   await page.waitForTimeout(3000);
 
-  const elementData = await page.evaluate(async () => {
-    setTimeout(() => {
-      const element = document.querySelector(".MuiAvatar-img");
-      if (element) {
-        return element.src;
-      } else {
-        return "Element not found";
-      }
-    }, 3000);
+  const elementData = await page.evaluate(() => {
+    const element = document.querySelector(".MuiAvatar-img");
+    if (element) {
+      return element.src;
+    } else {
+      return "Element not found";
+    }
   });
 
   console.log("iamge url", elementData);
