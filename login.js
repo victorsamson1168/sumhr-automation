@@ -27,7 +27,9 @@ async function automationFunction(type, username, password) {
 
   console.log("pu:", page.url());
 
-  // await pressButton(page, type);
+  await page.waitForTimeout(3000);
+
+  await pressButton(page, type);
   await page.waitForTimeout(3000);
 
   const elementData = await page.evaluate(() => {
