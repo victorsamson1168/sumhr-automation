@@ -23,7 +23,7 @@ async function automationFunction(type, username, password) {
   await page.waitForTimeout(1000);
 
   console.log("LOGGED IN");
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(2000);
 
   console.log("pu:", page.url());
 
@@ -50,7 +50,7 @@ async function automationFunction(type, username, password) {
  * @param {string} type The string
  */
 const pressButton = async (page, type) => {
-  const className = "";
+  let className = "";
   switch (type) {
     case "in":
       className = ".punch-in";

@@ -10,7 +10,7 @@ export const users = [
     },
     endTime: {
       hour: "19",
-      minute: "26",
+      minute: "29",
       second: "00",
     },
     approved: true,
